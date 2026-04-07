@@ -3,74 +3,52 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EAM/CMMS Dashboard Prototype</title>
+    <title>브라우저 테트리스</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="app-shell">
-      <aside class="sidebar">
-        <div class="logo">EAM/CMMS</div>
-        <nav>
-          <a class="active">1. 대시보드</a>
-          <a>2. 설비정보</a>
-          <a>3. 기능위치</a>
-          <a>4. BOM</a>
-          <a>5. 점검관리</a>
-          <a>6. 작업오더</a>
-          <a>7. 고장관리</a>
-          <a>8. 예방정비</a>
-          <a>9. 부품/자재</a>
-          <a>10. 리포트/분석</a>
-          <a>11. 관리자 설정</a>
-        </nav>
+    <main class="game-layout">
+      <section class="playfield card">
+        <h1>🎮 Tetris</h1>
+        <canvas id="board" width="300" height="600" aria-label="테트리스 보드"></canvas>
+      </section>
+
+      <aside class="panel card">
+        <div class="stat-box">
+          <h2>점수</h2>
+          <p id="score">0</p>
+        </div>
+        <div class="stat-box">
+          <h2>라인</h2>
+          <p id="lines">0</p>
+        </div>
+        <div class="stat-box">
+          <h2>레벨</h2>
+          <p id="level">1</p>
+        </div>
+
+        <div class="next-wrapper">
+          <h2>다음 블록</h2>
+          <canvas id="next" width="120" height="120" aria-label="다음 블록"></canvas>
+        </div>
+
+        <div class="controls">
+          <h2>조작법</h2>
+          <ul>
+            <li>⬅️ / ➡️ : 좌우 이동</li>
+            <li>⬇️ : 빠르게 내리기</li>
+            <li>⬆️ / X : 회전</li>
+            <li>Z : 반대 회전</li>
+            <li>Space : 하드 드롭</li>
+            <li>P : 일시정지</li>
+          </ul>
+        </div>
+
+        <button id="startBtn" class="btn">게임 시작 / 재시작</button>
+        <p id="status" class="status">시작 버튼을 눌러 게임을 시작하세요.</p>
       </aside>
+    </main>
 
-      <main class="content">
-        <header class="topbar card">
-          <div class="left">
-            <select><option>공장 A</option></select>
-            <select><option>기간: 이번 달</option></select>
-            <input placeholder="설비코드/설비명 검색" />
-          </div>
-          <div class="right">
-            <button>🔔 5</button>
-            <button>사용자: admin</button>
-          </div>
-        </header>
-
-        <section class="kpi-grid">
-          <article class="card kpi"><h4>설비 가동률</h4><p>92.4%</p><span class="ok">정상</span></article>
-          <article class="card kpi"><h4>점검 이행률</h4><p>88.1%</p><span class="warn">주의</span></article>
-          <article class="card kpi"><h4>예방정비 이행률</h4><p>90.6%</p><span class="ok">정상</span></article>
-          <article class="card kpi"><h4>이번 달 고장 건수</h4><p>14건</p><span class="danger">고장↑</span></article>
-          <article class="card kpi"><h4>MTBF</h4><p>126h</p><span class="ok">정상</span></article>
-          <article class="card kpi"><h4>MTTR</h4><p>3.1h</p><span class="warn">주의</span></article>
-        </section>
-
-        <section class="chart-grid">
-          <article class="card chart"><h3>월별 고장 추이</h3><div class="placeholder">Line Chart 영역</div></article>
-          <article class="card chart"><h3>공정별 비가동 시간</h3><div class="placeholder">Bar Chart 영역</div></article>
-          <article class="card chart"><h3>설비 상태 분포</h3><div class="placeholder">Donut Chart 영역</div></article>
-          <article class="card chart"><h3>부서별 점검 이행률</h3><div class="placeholder">Bar Chart 영역</div></article>
-        </section>
-
-        <section class="table-grid">
-          <article class="card">
-            <h3>오늘 예정 작업</h3>
-            <table>
-              <thead><tr><th>시간</th><th>설비</th><th>작업</th><th>담당</th></tr></thead>
-              <tbody><tr><td>09:00</td><td>PMP-101</td><td>일상점검</td><td>김정비</td></tr></tbody>
-            </table>
-          </article>
-          <article class="card">
-            <h3>긴급 작업오더</h3>
-            <table>
-              <thead><tr><th>WO번호</th><th>우선순위</th><th>상태</th><th>담당</th></tr></thead>
-              <tbody><tr><td>WO-24001</td><td class="danger-text">긴급</td><td>진행중</td><td>이정비</td></tr></tbody>
-            </table>
-          </article>
-        </section>
-      </main>
-    </div>
+    <script src="script.js"></script>
   </body>
 </html>
